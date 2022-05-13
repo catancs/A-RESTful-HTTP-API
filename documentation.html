@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Documentation</title>   
+        <style >
+            p {
+              color: white;
+              background-color: blue;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            table, td, th, tr{
+                font-family:'Times New Roman', Times, serif;
+                border-style:outset;
+                border-spacing:2px;
+                border-width:4px;
+                border-color:black;
+                
+            }
+            header,nav,article 
+            {                                          
+                 display: block
+            }
+            body 
+                 { 
+                    height:100%;
+                 }
+
+            html 
+                 { 
+                    height: 100%;
+                 }
+            h2 {
+              color: white;
+              background-color: greenyellow;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            h1 {
+              color: white;
+              background-color: greenyellow;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            h3 {
+              color: white;
+              background-color: greenyellow;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            h4 {
+              color: white;
+              background-color: greenyellow;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            h5 {
+              color: white;
+              background-color: greenyellow;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            h6 {
+              color: white;
+              background-color: greenyellow;
+              padding: 5px;
+              border: 1px solid black;
+            }
+            td{
+                background-color: #AFE1AF;
+            }
+          </style>
+          
+    </head>
+    <body>
+        <table>
+            <tr class="tableClass" >
+                <th colspan=2><h1>Delete item</h1></th>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong></td>
+                <td>/deleteItem</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Method</strong></td>
+                <td>DELETE</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong> <strong>parameters</strong></td>
+                <td>/"id: integer value"</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Request Body</strong></td>
+                <td>
+                    <p>URI not specified in <strong>parameters</strong>:</p>
+                    <pre>
+                                        {
+                                            "id":integer
+                                        }
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan=2 class="tableClass" ><strong>Responses</strong></td>
+                <td>
+                    <h1>Successful response</h1>
+                    <p>Status code: 204 (No Content)</p>
+                    <p>Response body:</p>
+                    <pre>-</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>Error response</h1>
+                    <p>Status code: 400 (Bad Request Error)</p>
+                    <p>Response Body:</p>
+                    <pre>
+                                        {
+                                            "errno": 1,
+                                            "code": "SQLITE_ERROR",
+                                            "__augmented": true
+                                        }
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/deleteItem</p>
+                    <pre>
+                                        {
+                                            "id":2
+                                        } 
+                    </pre>
+                    <h2>Output:</h2>
+                    <p>-</p>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/deleteItem/2</p>
+                    <h2>Output:</h2>
+                    <p>-</p>
+                </td>
+            </tr>
+            <tr class="tableClass" >
+                <th colspan=2><h1>Retrieve data set</h1></th>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong></td>
+                <td>/items</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Method</strong></td>
+                <td>GET</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong> <strong>parameters</strong></td>
+                <td>-</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Request Body</strong></td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td rowspan=2 class="tableClass" ><strong>Responses</strong></td>
+                <td>
+                    <h1>Error response</h1>
+                    <p>Status code: 400 (Bad Request Error)</p>
+                    <p>Response Body:</p>
+                    <pre>
+                          {
+                            "errno": 1,
+                            "code": "SQLITE_ERROR",
+                            " __augmented": true
+                           }
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>Successful response</h1>
+                    <p>Status code: 200 (OK)</p>
+                    <p>Response body:</p>
+                    <pre>
+                            {
+                               "id":integer,
+                               "brand":char,
+                               "model":char,
+                               "os":char,
+                               "image":char,
+                               "screensize": integer
+                            }
+                            MIME type : .json
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>
+                    <h2>Output:</h2>
+                    <p>[{"id":1,"brand":"Fairphone","model":"FP3","os":"Android","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fairphone_3_modules_on_display.jpg/320px-Fairphone_3_modules_on_display.jpg","screensize":5.65},{"id":2,"brand":"dsda","model":"srtwet","os":"dsgd","image":"adasda","screensize":5}]</p>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/items</p>
+                </td>
+            </tr>
+            <tr class="tableClass" >
+                <th colspan=2><h1>Create item</h1></th>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong></td>
+                <td>/addItem</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Method</strong></td>
+                <td>POST</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong> <strong>parameters</strong></td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Request Body</strong></td>
+                <td>
+                    <pre>
+                                {
+                                    "brand":char,
+                                    "model":char,
+                                    "os":char,
+                                    "image":char,
+                                    "screensize": integer
+                                }   
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan=2 class="tableClass" ><strong>Responses</strong></td>
+                <td>
+                    <h1>Error response</h1>
+                    <p>Status code: 400 (Bad Request Error)</p>
+                    <p>Response Body: Syntax error</p>
+        
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                    <h1>Successful response</h1>
+                    <p>Status code: 201 (Created)</p>
+                    <p>Response body: Created MIME type: .txt</p>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/addItems</p>
+                    <pre>
+                        {
+                            "brand":"example",
+                            "model":"example",
+                            "os":"example",
+                            "image":"example",
+                            "screensize": 8
+                        }  
+                    </pre>
+                    <h2>Output:</h2>
+                    <p><pre>
+                        {
+                        "id":"example",
+                        "brand":"example",
+                        "model":"example",
+                        "os":"example",
+                        "image":"example",
+                        "screensize":8
+                        }
+                    </pre></p>
+                </td>
+            </tr>
+            
+            <tr class="tableClass" >
+                <th colspan=2><h1>Change data of specific item</h1></th>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong></td>
+                <td>/updateItem</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Method</strong></td>
+                <td>PUT</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong> <strong>parameters</strong></td>
+                <td>/"id: integer value"</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Request Body</strong></td>
+                <td>
+                    <p>When the id is not specified in URI <strong>parameters</strong>:</p>
+                    <pre>
+                                    {
+                                        "id":integer,
+                                        "brand":char,
+                                        "model":char,
+                                        "os":char,
+                                        "image":char,
+                                        "screensize": integer
+                                    }
+                    </pre>
+                    <p>When the id is specified in URI <strong>parameters</strong>:</p>
+                    <pre>
+                                    {
+                                        "brand":char,
+                                        "model":char,
+                                        "os":char,
+                                        "image":char,
+                                        "screensize": integer
+                                    }   
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan=2 class="tableClass" ><strong>Responses</strong></td>
+                <td>
+                    <h1>Successful response</h1>
+                    <p>Status code: 204 (No Content)</p>
+                    <p>Response body:</p>
+                    <pre>-</pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>Error response</h1>
+                    <p>Status code: 400 (Bad Request Error)</p>
+                    <p>Response Body:</p>
+                    <pre>
+                                    {
+                                        "errno": 1,
+                                        "code": "SQLITE_ERROR",
+                                        "__augmented": true
+                                    }
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/updateItem/2</p>
+                    <pre>
+                                    {
+                                        "brand":"example",
+                                        "model":"example",
+                                        "os":"example",
+                                        "image":"example",
+                                        "screensize":8
+                                    } 
+                    </pre>
+                    <h2>Output:</h2>
+                    <p>-</p>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/updateItem</p>
+                    <pre>
+                                    {
+                                        "id":2,
+                                        "brand":"example",
+                                        "model":"example",
+                                        "os":"example",
+                                        "image":"example",
+                                        "screensize":8
+                                    } 
+                    </pre>
+                    <h2>Output:</h2>
+                    <p>-</p>
+                    
+                </td>
+            </tr>
+            <tr class="tableClass" >
+                <th colspan=2><h1>Get item data</h1></th>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong></td>
+                <td>/items</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Method</strong></td>
+                <td>GET</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>URI</strong> <strong>parameters</strong></td>
+                <td>/"id: integer value"<br>?id="integer value"</td>
+            </tr>
+            <tr class="tableClass" >
+                <td><strong>Request Body</strong></td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td rowspan=2 class="tableClass" ><strong>Responses</strong></td>
+                <td>
+                    <h1>Successful response</h1>
+                    <p>Status code: 200 (OK)</p>
+                    <p>Response body:</p>
+                    <pre>
+                                    {
+                                        "id":integer,
+                                        "brand":char,
+                                        "model":char,
+                                        "os":char,
+                                        "image":char,
+                                        "screensize": integer
+                                    }
+                                        MIME type : .json
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>Error response</h1>
+                    <p>Status code: 400 (Bad Request Error)</p>
+                    <p>Response Body:</p>
+                    <pre>
+                                    {
+                                        "errno": 1,
+                                        "code": "SQLITE_ERROR",
+                                        "__augmented": true
+                                    }
+                    </pre>
+                    <p>Status code: 404 (Not found Error)</p>
+                    <p>Response Body:</p>
+                    <pre>Item not found</pre>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Example</strong></td>
+                <td>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/items?id=2</p>
+                    <h2>Output:</h2>
+                    <p>{"id":2,"brand":"example","model":"example","os":"example","image":"example","screensize":8}</p>
+                    <h2>Input:</h2>
+                    <p>http://localhost:3000/items/1</p>
+                    <h2>Output:</h2>
+                    <p>{"id":1,"brand":"Fairphone","model":"FP3","os":"Android","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fairphone_3_modules_on_display.jpg/320px-Fairphone_3_modules_on_display.jpg","screensize":5.65}</p>
+                    
+                </td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
